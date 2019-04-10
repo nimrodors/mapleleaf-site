@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Bejelentkezés</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href=".//Styles/style.css">
+    </head>
+    <body>
+        <section class="login">
+            <form method="post" action="login"> 
+                <div class="row row__first">
+                    <div class="col span-1-of-3" style="margin-bottom: 10px">
+                        <label for="name">Felhasználó Név</label>
+                    </div>
+                    <div class="col span-2-of-3 fn-text">
+                        <input type="text" name="username" id="fsznev" placeholder="Felhasználónév" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3" style="margin-bottom: 10px; margin-top: 10px;">
+                        <label for="jelszó">Jelszó</label>
+                    </div>    
+                    <div class="col span-2-of-3">
+                        <input type="password" name="password" id="psw" placeholder="Jelszó" required>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div>
+                        <input class="bejelentkezes_button" type="submit" value="Bejelentkezés"/>
+                    </div>    
+                    <div>
+                        <a class="registration_button" href="regisztracio.html">Regisztráció</a>
+                    </div>
+                </div>
+            </form>  <!-- itt az action-nál adom meg a hogy a gombnyomás után melyik oldalra menjen -->
+
+
+
+
+        </section>
+
+    </body>
+</html>
