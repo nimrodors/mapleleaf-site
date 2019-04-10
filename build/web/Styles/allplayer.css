@@ -8,7 +8,36 @@ and open the template in the editor.
     Author     : Lenovo
 */
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    text-rendering: optimizeLegibility;
+}
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
 .roster--title {
+    position: relative;
     color: #003E7E;
-    margin-bottom: 50px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.logout--button {
+    position: absolute;
+    display: inline-block;
+    margin-left: 75%;
+    padding-top: 10px;
+    text-decoration: none;
+}
+
+.player--position {
+    color: #003E7E;
+    margin: 20px 0;
 }
