@@ -1,0 +1,87 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2019.01.29., 15:34:39
+    Author     : Lenovo
+*/
+
+/*
+color: #001B5B;
+color: #003E7E;
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    text-rendering: optimizeLegibility;
+}
+
+/*Újrahasználható Komponensek*/
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/*Header*/
+
+header {
+    background-image: url(..//Images/header_3.jpg);
+    height: 100vh;
+    width: auto;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.enter__button {
+    position: absolute;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 80%;
+    padding: 8px 30px;
+    font-weight: 300;
+    background: #003E7E;
+    color: #bdc3c7;
+    border-radius: 200px;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bejelentkezes_button {
+    margin-top: 10px;
+}
+
+.registration_button {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 100%;
+    font-weight: 10;
+    margin: 10px 0;
+    color: #003E7E;
+}
+
+.row__first {
+    margin-top: 30px;
+}
+
+.registration_cim {
+    margin: 10px 0;
+}
+
+.form-gomb {
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+    border-radius: 50%;
+    background-color: #003E7E;
+}
+

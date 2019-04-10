@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href=".//Styles/normalize.css">
+        <link rel="stylesheet" type="text/css" href=".//Styles/grid.css">
+        <link rel="stylesheet" type="text/css" href=".//Styles/style.css">
+        <title>Regisztrációs oldal</title>
+    </head>
+
+    <body> 
+
+        <section class="reg-lap">
+            <div class="row">
+                <h2 class="registration_cim">Regisztráció</h2>
+            </div>
+            <div class="row">
+                <form method="post" action="regisztracio" class="reg-form">
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label for="nev">Keresztnév</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="text" name="keresztnev" id="name" placeholder="Keresztnév" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label for="nev">Vezetéknév</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="text" name="vezeteknev" id="name" placeholder="Vezetéknév" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="col span-1-of-3">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="text" name="email" id="email" placeholder="Email" required>
+                        </div>
+                    </div>  
+                    <div>
+                        <div class="col span-1-of-3">
+                            <label for="email">Jelszó</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="password" name="jelszo" id="pass" placeholder="Jelszó" required>
+                        </div>
+                    </div> 
+                    
+                    <div>
+                        <div class="col span-1-of-3">
+                            <label for="email">Jelszó Ellenörzés</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="password" name="jelszo_ellenorzes" id="pass" placeholder="Jelszó Ellenörzés" required>
+                        </div>
+                    </div> 
+
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label>Elfogadom a regisztrációs feltételeket</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="checkbox" name="elfogad" value="true" id="nev">
+                        </div>
+                    </div>  
+
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label>&nbsp;</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="submit" value="Elküldés" class="form-gomb">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </body>
+</html>
