@@ -16,9 +16,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Maple Leaf Roster</title>
+        <link href=".//Styles/allplayer.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>2018-2019 ROSTER</h1>
+        <a href="" class="logout--button">logout</a>
+        <h1 class="roster--title">2018-2019 ROSTER</h1>
 
         <h2>Forwards</h2>
 
