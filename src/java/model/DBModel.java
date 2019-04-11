@@ -269,9 +269,9 @@ public class DBModel implements IModel {
         addUser.setInt(1, user.getId());
         addUser.setString(2, user.getFirst_name());
         addUser.setString(3, user.getLast_name());
-        addUser.setString(5, user.getEmail());
-        addUser.setString(6, user.getPassword());
-        addUser.setInt(7, user.getPermission());
+        addUser.setString(4, user.getEmail());
+        addUser.setString(5, user.getPassword());
+        addUser.setInt(6, user.getPermission());
         
         addUser.executeUpdate();
     }
@@ -314,5 +314,14 @@ public class DBModel implements IModel {
         }
         return user;
     }
+
+    @Override
+    public User fillupUser(String knev, String vnev, String email, String pass) {
+        
+        User new_User = new User(knev, vnev, email, pass, 0);
+        
+        return new_User;
+    }
+
 
 }

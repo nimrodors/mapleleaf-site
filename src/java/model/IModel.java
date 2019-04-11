@@ -15,7 +15,8 @@ import java.util.Map;
  */
 public interface IModel {
     
-    
+    User authUser (String userName, String password) throws SQLException;
+    User fillupUser (String knev, String vnev, String email, String pass);
     
     List<Forward> getAllForward () throws SQLException;
     List<Defense> getAllDefense () throws SQLException;
