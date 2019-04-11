@@ -47,7 +47,7 @@
 
                     <c:forEach var="f" items="${forward}">
                         <tr>
-                            <td><a href="player?forwardid=${f.id}">${f.firstName}</a></td>
+                            <td><a href="player?forwardid=${f.id}" class="forward--player">${f.firstName}</a></td>
                             <td>${f.lastName}</td>
                             <td> ${f.number}</td>
                             <td> ${f.position}</td>
@@ -136,7 +136,7 @@
             </div>
         </div>
 
-        <div class="golies">
+        <div class="goalies">
             <div class="row">
                 <h2 class="player--position">Goalies</h2>
             </div>

@@ -44,7 +44,7 @@ public class loginServlets extends HttpServlet {
             String pass = request.getParameter("password");
             
             if("1234".equals(pass)){
-                session.setAttribute("userName", uName);
+                session.setAttribute("username", uName);
                 request.getRequestDispatcher("allplayer").forward(request, response);
             }else {
                 out.println("<h3>Hibás jelszó</h3>");
