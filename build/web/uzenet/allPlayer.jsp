@@ -20,7 +20,7 @@
     </head>
     <body>
         <div class="row">
-            <a href="" class="logout--button">logout</a>
+            <a href="logout" class="logout--button">logout</a>
             <h1 class="roster--title">2018-2019 ROSTER</h1>
         </div>
         <div class="row">

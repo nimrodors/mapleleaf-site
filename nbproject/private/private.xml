@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Örs/TorontoMapleLeafHungarian/TorontoMapleLeafHungarian/src/java/servlets/loginServlets.java</file>
+            <file>file:/C:/Örs/TorontoMapleLeafHungarian/TorontoMapleLeafHungarian/web/uzenet/allPlayer.jsp</file>
+            <file>file:/C:/Örs/TorontoMapleLeafHungarian/TorontoMapleLeafHungarian/web/Styles/style.css</file>
+            <file>file:/C:/Örs/TorontoMapleLeafHungarian/TorontoMapleLeafHungarian/web/login.html</file>
+            <file>file:/C:/Örs/TorontoMapleLeafHungarian/TorontoMapleLeafHungarian/web/Styles/allplayer.css</file>
+            <file>file:/C:/Örs/TorontoMapleLeafHungarian/TorontoMapleLeafHungarian/src/java/servlets/LogoutServlet.java</file>
+        </group>
     </open-files>
 </project-private>
