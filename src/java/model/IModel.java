@@ -15,6 +15,8 @@ import java.util.Map;
  */
 public interface IModel {
     
+    
+    
     List<Forward> getAllForward () throws SQLException;
     List<Defense> getAllDefense () throws SQLException;
     List<Goalies> getAllGoalies () throws SQLException;
@@ -25,5 +27,8 @@ public interface IModel {
     
     Map<Integer, Goalies> getGoliesMap() throws SQLException;
     List<GoalisPlayer> getChooseGoalies (int goalieid) throws SQLException;
+    
+    void addUser (User user) throws SQLException;
+    List<User> allUser () throws SQLException;
     
 }

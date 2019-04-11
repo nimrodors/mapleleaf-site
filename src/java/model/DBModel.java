@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,22 +22,28 @@ import java.util.Map;
 public class DBModel implements IModel {
 
     private Connection conn;
+    private PreparedStatement authUser;
     private PreparedStatement getAllForwards;
     private PreparedStatement getAllDefense;
     private PreparedStatement getAllGoalies;
     private PreparedStatement getPlayer;
     private PreparedStatement getChooseDefense;
     private PreparedStatement getChooseGoalie;
+    private PreparedStatement addUser;
+    private PreparedStatement getAllUser;
 
     public DBModel(Connection conn) throws SQLException {
         this.conn = conn;
 
+        authUser = conn.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
         getAllForwards = conn.prepareStatement("SELECT * FROM forwards");
         getAllDefense = conn.prepareStatement("SELECT * FROM defense");
         getAllGoalies = conn.prepareStatement("SELECT * FROM goalies");
         getPlayer = conn.prepareStatement("SELECT * FROM forward_players WHERE forward_id = ?");
         getChooseDefense = conn.prepareStatement("SELECT * FROM defense_player WHERE defense_id = ?");
         getChooseGoalie = conn.prepareStatement("SELECT * FROM goalies_player WHERE goalieid = ?");
+        addUser = conn.prepareStatement("INSERT INTO user(id, first_name, last_name, email, password, permission) VALUES (?, ?, ?, ?, ?, ?)");
+        getAllUser = conn.prepareStatement("SELECT * FROM user");
     }
 
     public void close() throws SQLException {
@@ -255,6 +262,38 @@ public class DBModel implements IModel {
         }
         rs.close();
         return goalie;
+    }
+
+    @Override
+    public void addUser(User user) throws SQLException {
+        addUser.setInt(1, user.getId());
+        addUser.setString(2, user.getFirst_name());
+        addUser.setString(3, user.getLast_name());
+        addUser.setString(5, user.getEmail());
+        addUser.setString(6, user.getPassword());
+        addUser.setInt(7, user.getPermission());
+        
+        addUser.executeUpdate();
+    }
+
+    @Override
+    public List<User> allUser() throws SQLException {
+        List<User> users = new ArrayList<>();
+        
+        ResultSet rs = getAllUser.executeQuery();
+        User user = null;
+        
+        while(rs.next()) {
+            user = new User(
+                    rs.getInt("id"), 
+                    rs.getString("first_name"), 
+                    rs.getString("last_name"), 
+                    rs.getString("email"), 
+                    rs.getString("password"), 
+                    rs.getInt("permission"));
+            users.add(user);
+        }
+        return users;
     }
 
 }

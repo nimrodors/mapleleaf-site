@@ -73,7 +73,7 @@ public class DefenseServlet extends HttpServlet {
             
             request.setAttribute("name", name);
             request.setAttribute("df", dfPlayer);
-            request.getRequestDispatcher("uzenet/defense.jsp").forward(request, response);
+            request.getRequestDispatcher("players/uzenet/defense.jsp").forward(request, response);
 
         } catch (NamingException | SQLException ex) {
             Hiba hiba = new Hiba(ex.getMessage());
