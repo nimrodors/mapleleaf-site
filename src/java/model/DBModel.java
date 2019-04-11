@@ -296,4 +296,23 @@ public class DBModel implements IModel {
         return users;
     }
 
+    @Override
+    public User authUser(String userName, String password) throws SQLException {
+        authUser.setString(1, userName);
+        authUser.setString(2, password);
+        ResultSet rs = authUser.executeQuery();
+        User user = null;
+        if (rs.next()) {
+            user = new User(
+                    rs.getInt("id"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getInt("permission")
+            );
+        }
+        return user;
+    }
+
 }
