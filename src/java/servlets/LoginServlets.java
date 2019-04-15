@@ -70,8 +70,7 @@ public class LoginServlets extends HttpServlet {
                     session.setAttribute("user", user);
                     request.getRequestDispatcher("allplayer").forward(request, response);
                 } else {
-                    request.getRequestDispatcher("login").forward(request, response);
-                    out.println("<h3>Hibás jelszó</h3>");
+                    request.getRequestDispatcher("uzenet/bad_password_email.jsp").forward(request, response);
                 }
             } catch (NamingException | SQLException ex) {
                 Hiba hiba = new Hiba(ex.getMessage());
