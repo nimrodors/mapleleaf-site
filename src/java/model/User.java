@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Lenovo
  */
-public class User {
+public class User implements Serializable{
     
     
     private int id;

@@ -56,19 +56,22 @@ public class RegisztracioServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String uname = (String) session.getAttribute("userName");
         User new_User = null;
+        
 
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
+            Connection conn = null;
             Context iniCtx;
 
             try {
                 iniCtx = new InitialContext();
                 Context envCtx = (Context) iniCtx.lookup("java:comp/env");
                 DataSource ds = (DataSource) envCtx.lookup("jdbc/mapleleaf");
-                Connection conn = ds.getConnection();
-                
+                conn = ds.getConnection();
+
                 DBModel model = new DBModel(conn);
+                
 
                 HashMap user = new HashMap();
 
@@ -84,19 +87,20 @@ public class RegisztracioServlet extends HttpServlet {
                 String jelszo_ellenorzes = (String) user.get("jelszo_ellenorzes");
 
                 if (jelszo.equals(jelszo_ellenorzes)) {
-                    
+
                     String knev = (String) user.get("keresztnev");
                     String vnev = (String) user.get("vezeteknev");
                     String email = (String) user.get("email");
                     String pass = (String) user.get("jelszo");
-                    
+
                     model.addUser(new User(knev, vnev, email, pass, 0));
                     model.fillupUser(knev, vnev, email, pass);
-                    
-                    request.setAttribute("user", new_User);
-                    
+
+                    List<User> alluser = model.allUser();
+                    session.setAttribute("alluser", alluser);
+
                     request.getRequestDispatcher("uzenet/successful_registration.jsp").forward(request, response);
-                    
+
                 } else {
                     out.println("A jelszo nem egyezik");
                 }
@@ -105,6 +109,14 @@ public class RegisztracioServlet extends HttpServlet {
                 Hiba hiba = new Hiba(ex.getMessage());
                 request.setAttribute("hiba", hiba);
                 request.getRequestDispatcher("uzenet/hiba.jsp").forward(request, response);
+            } finally {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Hiba hiba = new Hiba(ex.getMessage());
+                    request.setAttribute("hiba", hiba);
+                    request.getRequestDispatcher("uzenet/hiba.jsp").forward(request, response);
+                }
             }
         }
     }

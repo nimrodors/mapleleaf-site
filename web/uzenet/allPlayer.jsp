@@ -20,6 +20,8 @@
     </head>
     <body>
         <div class="row">
+            !<p class="name">Welcome ${user.first_name} ${user.last_name}!</p>
+            <%-- <jsp:getProperty name="user" property="last_name"/> --%>
             <a href="logout" class="logout--button">logout</a>
             <h1 class="roster--title">2018-2019 ROSTER</h1>
         </div>

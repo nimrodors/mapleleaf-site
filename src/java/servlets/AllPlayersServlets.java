@@ -26,6 +26,7 @@ import model.Defense;
 import model.Forward;
 import model.Goalies;
 import model.Hiba;
+import model.User;
 
 /**
  *
@@ -45,7 +46,8 @@ public class AllPlayersServlets extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
+        HttpSession session = request.getSession();
         Context iniCtx;
 
         try {

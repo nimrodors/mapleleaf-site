@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Lenovo
  */
-public class GoalisPlayer {
+public class GoalisPlayer implements Serializable{
     
     private int id;
     private Goalies goalie;

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Application;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -47,10 +48,10 @@ public class LoginServlets extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession();
-
+        
         String uName = request.getParameter("username");
         String pass = request.getParameter("password");
-
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
@@ -65,6 +66,8 @@ public class LoginServlets extends HttpServlet {
 
                 DBModel model = new DBModel(conn);
                 user = model.authUser(uName, pass);
+                
+                conn.close();
 
                 if (user != null) {
                     session.setAttribute("user", user);
