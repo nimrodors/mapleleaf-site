@@ -48,7 +48,7 @@ public class AuthFilter implements Filter {
         HttpSession session = req.getSession(false);
         
         /*Itt Tudom Megvizsgálni, hogy van e valamire jogosultsága, ha nincs akkor küldök egy hibaüzenetet, vagy visszairányítom valamerre*/
-        if(session == null || session.getAttribute("username")==null) {
+        if(session == null || session.getAttribute("user")==null) {
             resp.sendRedirect(req.getContextPath() + "/login.html");
         } 
 

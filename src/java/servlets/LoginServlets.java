@@ -7,19 +7,30 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+import model.DBModel;
+import model.Hiba;
+import model.User;
 
 /**
  *
  * @author Lenovo
  */
 @WebServlet(name = "login", urlPatterns = {"/login"})
-public class loginServlets extends HttpServlet {
+public class LoginServlets extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,20 +45,38 @@ public class loginServlets extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        
+
         HttpSession session = request.getSession();
-        
+
+        String uName = request.getParameter("username");
+        String pass = request.getParameter("password");
+
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            String uName = request.getParameter("username");
-            String pass = request.getParameter("password");
-            
-            if("1234".equals(pass)){
-                session.setAttribute("username", uName);
-                request.getRequestDispatcher("allplayer").forward(request, response);
-            }else {
-                out.println("<h3>Hibás jelszó</h3>");
+
+            Context iniCtx;
+            User user;
+
+            try {
+                iniCtx = new InitialContext();
+                Context envCtx = (Context) iniCtx.lookup("java:comp/env");
+                DataSource ds = (DataSource) envCtx.lookup("jdbc/mapleleaf");
+                Connection conn = ds.getConnection();
+
+                DBModel model = new DBModel(conn);
+                user = model.authUser(uName, pass);
+
+                if (user != null) {
+                    session.setAttribute("user", user);
+                    request.getRequestDispatcher("allplayer").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("login").forward(request, response);
+                    out.println("<h3>Hibás jelszó</h3>");
+                }
+            } catch (NamingException | SQLException ex) {
+                Hiba hiba = new Hiba(ex.getMessage());
+                request.setAttribute("hiba", hiba);
+                request.getRequestDispatcher("uzenet/hiba.jsp").forward(request, response);
             }
         }
     }

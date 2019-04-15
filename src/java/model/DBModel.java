@@ -35,7 +35,7 @@ public class DBModel implements IModel {
     public DBModel(Connection conn) throws SQLException {
         this.conn = conn;
 
-        authUser = conn.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
+        authUser = conn.prepareStatement("SELECT * FROM user WHERE email=? AND password=?");
         getAllForwards = conn.prepareStatement("SELECT * FROM forwards");
         getAllDefense = conn.prepareStatement("SELECT * FROM defense");
         getAllGoalies = conn.prepareStatement("SELECT * FROM goalies");
